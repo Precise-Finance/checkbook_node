@@ -106,4 +106,18 @@ export class Check {
       idempotencyKey
     );
   }
+
+  triggerWebhook(params: { check_id: string, status: string, return_code?: string }, callback: (err, response) => void) {
+    return this.resource.request(
+      {
+        method: "PUT",
+        uri: "/check/webhook/" + params.check_id,
+        body: {
+          status: params.status,
+          options: params.return_code ? { return_code: params.return_code } : undefined,
+        },
+      },
+      callback
+    );
+  }
 }

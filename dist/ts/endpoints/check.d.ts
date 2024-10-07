@@ -12,4 +12,9 @@ export declare class Check {
     sendPhysicalCheck(params: any, callback: (err: any, response: any) => void, idempotencyKey?: any): void;
     sendDirectCheck(params: any, callback: (err: any, response: any) => void, idempotencyKey?: any): void;
     sendMultipleChecksCSV(params: any, callback: (err: any, response: any) => void, idempotencyKey?: any): void;
+    triggerWebhook(params: {
+        check_id: string;
+        status: string;
+        return_code?: string;
+    }, callback: (err: any, response: any) => void): void;
 }
