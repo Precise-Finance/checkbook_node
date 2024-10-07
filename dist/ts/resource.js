@@ -18,8 +18,8 @@ class Resource {
             if (error) {
                 return callback.call(this, error, null);
             }
-            if (![200, 201].includes(response.statusCode) || body.error) {
-                error = response.statusCode + " " + body.error;
+            if (![200, 201].includes(response.statusCode) || (body === null || body === void 0 ? void 0 : body.error)) {
+                error = response.statusCode + " " + (body === null || body === void 0 ? void 0 : body.error);
                 return callback.call(this, error, response);
             }
             return callback.call(this, null, body);
